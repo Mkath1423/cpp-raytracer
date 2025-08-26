@@ -1,8 +1,9 @@
 #include "cpp-raytracer/common.h"
 
-#include "cpp-raytracer/hittable.h"
-#include "cpp-raytracer/hittable_list.h"
-#include "cpp-raytracer/sphere.h"
+#include "cpp-raytracer/hittable/hittable.h"
+#include "cpp-raytracer/hittable/hittable_list.h"
+#include "cpp-raytracer/hittable/sphere.h"
+#include "cpp-raytracer/hittable/mesh.h"
 
 color background_color(const ray &r){
     double y = r.direction().y();
@@ -50,7 +51,8 @@ int main() {
 
     world.add(make_shared<sphere>(point3(0, 0, -1), 0.5));
     world.add(make_shared<sphere>(point3(0, -100.5, -1), 100));
-
+    world.add(make_shared<cube>(point3(0, 0, -1), vec3(0.5, 0.5, 0.5)));
+    
     // Render
     std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
